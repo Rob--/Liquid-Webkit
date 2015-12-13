@@ -53,8 +53,18 @@
               <span>
                 <div class="switch">
                   <label class="toggle-text">
-                    <input ng-model="ESP.full_bloom" type="checkbox">
+                    <input ng-model="ESP.fullBloom" type="checkbox">
                     <span class="lever"></span>Full Bloom (fill with glow)
+                  </label>
+                </div>
+              </span>
+
+              <!-- Glow Items Toggle -->
+              <span>
+                <div class="switch">
+                  <label class="toggle-text">
+                    <input ng-model="ESP.glowItems" type="checkbox">
+                    <span class="lever"></span>Glow Items (weapons, chickens, etc)
                   </label>
                 </div>
               </span>
@@ -127,6 +137,11 @@
                 <a ng-click="ESP.colours.editing = 'enemy'" class="waves-effect waves-light btn modal-trigger" href="#colourPickerModal">Pick Enemy Colour</a>
               </div>
 
+              <div class="esp-colour-option">
+                <p>Items Colour: <span ng-bind="rgbaToHex('item')"></span> </p> <div ng-style="{'background-color': getColourString('item')}" class="esp-colour-sample-small"></div>
+                <a ng-click="ESP.colours.editing = 'item'" class="waves-effect waves-light btn modal-trigger" href="#colourPickerModal">Pick Items Colour</a>
+              </div>
+
               <hr>
 
             </div>
@@ -137,9 +152,14 @@
       </ul>
     </div>
 
+    <!-- Scripts -->
+
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
+
+    <script type="text/javascript" src="js/resources/materialize.min.js"></script>
+    <script type="text/javascript" src="js/resources/angular.min.js"></script>
+    <script type="text/javascript" src="js/resources/ripples.min.js"></script>
+
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/hacks/esp.js"></script>
   </body>
