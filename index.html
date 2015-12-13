@@ -69,6 +69,33 @@
                 </div>
               </span>
 
+              <!-- Health Based Colour Toggle -->
+              <span>
+                <div class="switch">
+                  <label class="toggle-text">
+                    <input ng-model="ESP.colours.healthBased" type="checkbox">
+                    <span class="lever"></span>Health Based Colour
+                  </label>
+                </div>
+              </span>
+
+              <hr>
+
+              <!-- Change Spotted Alpha Toggle -->
+              <span>
+                <div class="switch">
+                  <label class="toggle-text">
+                    <input ng-model="ESP.changeSpottedAlpha.enabled" type="checkbox">
+                    <span class="lever"></span>Change Alpha when Spotted ({{ ESP.changeSpottedAlpha.to }}%)
+                  </label>
+                </div>
+              </span>
+
+              <!-- Spotted Alpha -->
+              <p class="range-field">
+                <input ng-model="ESP.changeSpottedAlpha.to" type="range" min="0" max="100" />
+              </p>
+
               <hr>
 
               <!-- Colour Chooser Modal -->

@@ -19,13 +19,13 @@ memoryjs.openProcess('csgo.exe', function(p){
   /* Get the address of the client module */
   memoryjs.findModule('client.dll', _process.th32ProcessID, function(m){
     _client = m.modBaseAddr;
-    log(`Successfully found ${m.szModule}`, 4000);
+    log(`Successfully found ${m.szModule}`, 2000);
   })
 
   /* Get the address of the engine module */
   memoryjs.findModule('engine.dll', _process.th32ProcessID, function(m){
     _engine = m.modBaseAddr;
-    log(`Successfully found ${m.szModule}`, 4000);
+    log(`Successfully found ${m.szModule}`, 2000);
   })
 });
 
@@ -37,16 +37,17 @@ var offsets = {
   iGlowIndex: 0x0000A2E0,
   iTeamNumber: 0x000000F0,
   iHealth: 0x000000FC,
-  bDormant: 0x000000E9
+  bDormant: 0x000000E9,
+  bSpotted: 0x00000935
 }
 
 /* Update vars used for the hacks*/
 setInterval(function(){
   localBase = memoryjs.readMemory(_client + offsets.dwLocalPlayer, 'dword');
   /* friendly = my team number */
-	friendly = memoryjs.readMemory(localBase + offsets.iTeamNumber, 'int');
-	glowPointer = memoryjs.readMemory(_client + offsets.dwGlowObject, 'dword');
-}, 10);
+  friendly = memoryjs.readMemory(localBase + offsets.iTeamNumber, 'int');
+  glowPointer = memoryjs.readMemory(_client + offsets.dwGlowObject, 'dword');
+}, 500);
 
 /* Intialise any modals */
 $('.modal-trigger').leanModal();
