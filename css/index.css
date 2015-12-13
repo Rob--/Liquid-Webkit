@@ -1,0 +1,174 @@
+/* Sets general formatting */
+body {
+  background-color: #21252b;
+  font-family: Roboto;
+  color: #E6E6E6;
+}
+
+/* Formatting for all the containers */
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Adds 20px of padding between the top title bar of the application
+   and the title card */
+.header {
+  padding-top: 20px
+}
+
+/* Sets the text color for the switches/toggles to not be a bright white */
+label {
+  color: #E6E6E6 !important
+}
+
+/* Text displayed next to toggle, formatted neatly as default is hideous */
+.toggle-text {
+  font-weight: 400 !important;
+  font-size: 14px !important;
+}
+
+.row {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* The formatting for the hack on/off toggle, is absolute as the parent element
+   is relative and this causes the switch to sit in the top right of the parent */
+.hack-switch {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 40px;
+}
+
+/* The border beneath the collapsible-header (green for enabled) */
+.hack-enabled {
+  border-bottom: 5px solid #009688;
+}
+
+/* The border beneath the collapsible-header (red for disabled) */
+.hack-disabled {
+  border-bottom: 5px solid #96000E
+}
+
+/* Green by default background / white text,
+   margin allows for spacing when buttons are next to each other */
+.btn {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #fff !important;
+}
+
+/* White background / blackish text for when a button is not 'active' */
+.btn-white {
+  background-color: #fff !important;
+  color: #21252B !important;
+}
+
+/* Delete the hideous border from around the collapsible */
+.collapsible {
+  border: 0;
+}
+
+/* Formatting options for the hack header */
+.collapsible-header {
+  position: relative;
+  padding: 10px;
+  font-size: 40px;
+  color: #E6E6E6;
+  background-color: #282C34;
+  margin-top: 0px;
+  transition: border-bottom 0.2s linear;
+}
+
+/* Delete the border from the bottom of the collapible to
+   stop glitches as the header has a border-bottom */
+.collapsible-body {
+  border-bottom: 0px;
+}
+
+.card {
+  background-color: #282C34;
+}
+
+/* Formatting options for the element that contains the hack options */
+.hack-options {
+  margin-bottom: 0px !important;
+  margin-left: 0px ! important;
+  margin-right: 0px !important;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Delete the hideous border from the range picker */
+input[type=range] {
+  border: 0px;
+}
+
+/* Overrides default formatting for p inside the collapsible-body */
+.collapsible-body p:not(.range-field) {
+  padding: 10px;
+}
+
+/* Set padding to 10px as we're hiding the thumb (displays the range value)
+and don't need so much space */
+.range-field {
+  padding-left : 10px !important;
+  padding-right: 10px !important;
+  padding-bottom: 10px !important;
+  padding-top: 0px !important;
+}
+
+/* Hide the thumb for the range so we can implement a custom display */
+.thumb {
+  visibility: hidden;
+}
+
+/* Added margin and deleted hideous default input border for colour input box */
+#esp-colour {
+  border: 0;
+  margin-left: 5px
+}
+
+/* Formatting for popup modals */
+.modal {
+  background-color: #282C34;
+  border-radius: 0px;
+  height: 285px;
+}
+
+/* Formatting for div in which modal content sits */
+.modal-content {
+  background-color: #282C34;
+  border: 0;
+  border-radius: 0px;
+  padding-bottom: 5px !important;
+}
+
+/* Parent div formatting for the sample colour block */
+.esp-colour-option {
+  position: relative;
+}
+
+/* Sets the formatting that's applied to a div that makes it act like a block that
+   sits next to the colour information area and samples a chosen colour, sits inside of esp-colour-option */
+.esp-colour-sample-small {
+  height: 25px;
+  width: 75px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* The large block colour sample that appears in the modal */
+.esp-colour-sample-block {
+  height: 30px;
+}
+
+/* Sets no top padding as HR has 10px margin beneath, an element below
+   HR has padding on top that causes too wide of a gap */
+.first-element-hr {
+  padding-top: 0px !important;
+}

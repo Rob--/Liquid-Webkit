@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type='text/css'>
+    <link rel="stylesheet" href="css/materialize.min.css" type='text/css'>
+    <link rel="stylesheet" href="css/index.css" type='text/css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,300' type='text/css'>
+  </head>
+  <body ng-app="liquid">
+
+    <div class="container header">
+      <div class="card white-text">
+        <div class="card-content">
+          <h1>Liquid <small>v1.4</small></h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <ul class="collapsible" data-collapsible="accordion">
+
+        <!-- ESP -->
+        <li ng-controller="hackESP">
+          <!-- Header -->
+          <div ng-class="ESP.enabled ? 'hack-enabled' : 'hack-disabled'" class="collapsible-header hack-header">
+            ESP
+
+            <!-- Hack Toggle -->
+            <span class="hack-switch">
+              <div class="switch">
+                <label>
+                  <input ng-model="ESP.enabled" type="checkbox">
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </span>
+
+          </div>
+
+          <!-- Content -->
+          <div class="collapsible-body">
+            <br>
+            <div class="row hack-options">
+
+              <!-- ESP Target Buttons -->
+              <a ng-click="setTarget($event, 'BOTH')" ng-class="setButtonClass('BOTH')" class="waves-effect waves-light btn">BOTH</a>
+              <a ng-click="setTarget($event, 'ENEMIES')" ng-class="setButtonClass('ENEMIES')" class="waves-effect waves-light btn">ENEMIES</a>
+              <a ng-click="setTarget($event, 'FRIENDLIES')" ng-class="setButtonClass('FRIENDLIES')" class="waves-effect waves-light btn">FRIENDLIES</a>
+
+              <hr>
+
+              <!-- Full Bloom Toggle -->
+              <span>
+                <div class="switch">
+                  <label class="toggle-text">
+                    <input ng-model="ESP.full_bloom" type="checkbox">
+                    <span class="lever"></span>Full Bloom (fill with glow)
+                  </label>
+                </div>
+              </span>
+
+              <hr>
+
+              <!-- Colour Chooser Modal -->
+              <div id="colourPickerModal" class="modal">
+                <div class="modal-content">
+
+                  <!-- ESP.colours contains 'team' / 'enemy' - ESP.colours.editing is set to either 'team' or 'enemy'
+                       and is used to access the colours dependent on the buttons clicked, a minimum value of
+                       one is used because when converting rgb to hex, the bitshifts require the values to be non-zero -->
+
+                  <div class="row">
+                    <div class="col m6">
+
+                      <!-- ESP Red -->
+                      <p>Red ({{ ESP.colours[ESP.colours.editing].r }}):</p>
+                      <p class="range-field">
+                        <input ng-model="ESP.colours[ESP.colours.editing].r" type="range" min="1" max="255" />
+                      </p>
+
+                    </div>
+                    <div class="col m6">
+
+                      <!-- ESP Green -->
+                      <p>Green ({{ ESP.colours[ESP.colours.editing].g }}):</p>
+                      <p class="range-field">
+                        <input ng-model="ESP.colours[ESP.colours.editing].g" type="range" min="1" max="255" />
+                      </p>
+
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col m6">
+
+                      <!-- ESP Blue -->
+                      <p>Blue ({{ ESP.colours[ESP.colours.editing].b }}):</p>
+                      <p class="range-field">
+                        <input ng-model="ESP.colours[ESP.colours.editing].b" type="range" min="1" max="255" />
+                      </p>
+
+                    </div>
+                    <div class="col m6">
+
+                      <!-- ESP Alpha -->
+                      <p>Opacity ({{ ESP.colours[ESP.colours.editing].a }}%):</p>
+                      <p class="range-field">
+                        <input ng-model="ESP.colours[ESP.colours.editing].a" type="range" min="0" max="100" />
+                      </p>
+
+                    </div>
+                  </div>
+
+                  <div ng-style="{'background-color': getColourString(ESP.colours.editing)}" class="row esp-colour-sample-block"></div>
+
+                </div>
+              </div>
+
+              <!-- ESP Colour Picker Buttons -->
+              <div class="esp-colour-option">
+                <p class="first-element-hr">Team Colour: <span ng-bind="rgbaToHex('team')"></span> </p> <div ng-style="{'background-color': getColourString('team')}" class="esp-colour-sample-small"></div>
+                <a ng-click="ESP.colours.editing = 'team'" class="waves-effect waves-light btn modal-trigger" href="#colourPickerModal">Pick Team Colour</a>
+              </div>
+
+              <div class="esp-colour-option">
+                <p>Enemy Colour: <span ng-bind="rgbaToHex('enemy')"></span> </p> <div ng-style="{'background-color': getColourString('enemy')}" class="esp-colour-sample-small"></div>
+                <a ng-click="ESP.colours.editing = 'enemy'" class="waves-effect waves-light btn modal-trigger" href="#colourPickerModal">Pick Enemy Colour</a>
+              </div>
+
+              <hr>
+
+            </div>
+
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/hacks/esp.js"></script>
+  </body>
+</html>
