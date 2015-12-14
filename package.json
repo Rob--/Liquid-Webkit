@@ -3,10 +3,15 @@
   "version": "0.0.1",
   "main": "index.html",
   "dependencies": {
-    "memoryjs": "^1.0.2"
+    "memoryjs": "^1.0.2",
+    "keyhold": "1.0.0"
   },
   "window": {
     "title": "Liquid v1.0.4",
-    "toolbar": false
+    "toolbar": false,
+    "min_width": 800,
+    "min_height": 800,
+    "max_width": 800,
+    "max_height": 800
   }
 }

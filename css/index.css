@@ -52,6 +52,14 @@ label {
   border-bottom: 5px solid #96000E
 }
 
+/* The main body (collapsible menus) of the program,
+   I set a fixed limit on the height/width of the program
+   and set the max-height of the menu to allow for scrolling */
+.hack-body {
+  overflow-y: scroll;
+  max-height: 550px
+}
+
 /* Green by default background / white text,
    margin allows for spacing when buttons are next to each other */
 .btn {
@@ -75,7 +83,7 @@ label {
 .collapsible-header {
   position: relative;
   padding: 10px;
-  font-size: 40px;
+  font-size: 30px;
   color: #E6E6E6;
   background-color: #282C34;
   margin-top: 0px;
@@ -171,4 +179,16 @@ and don't need so much space */
    HR has padding on top that causes too wide of a gap */
 .first-element-hr {
   padding-top: 0px !important;
+}
+
+/* Hide all elements of the scroll bar */
+::-webkit-scrollbar, ::-webkit-scrollbar-button, ::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece, ::-webkit-scrollbar-corner, ::-webkit-resizer {
+  background-color:rgba(0, 0, 0, 0)
+}
+
+/* Make the actual scroll piece transparent and rounded */
+::-webkit-scrollbar-thumb {
+  background-color:rgba(0, 0, 0, 0.3);
+  border-radius: 20px
 }

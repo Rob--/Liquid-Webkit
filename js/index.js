@@ -1,5 +1,6 @@
 // Open debug tools
 //require('nw.gui').Window.get().showDevTools();
+var gui = require('nw.gui')
 
 /* The node add-on used to open the process,
    get the required modules and read/write to memory */
@@ -32,13 +33,23 @@ memoryjs.openProcess('csgo.exe', function(p){
 /* Offsets */
 var offsets = {
   dwEntityList: 0x04A587D4,
+  dwEnginePointer: 0x6062C4,
   dwLocalPlayer: 0x00A6A444,
   dwGlowObject: 0x04B6DA7C,
+  dwActiveWeapon: 0x00002EC8,
+  dwWeaponId: 0x32BC,
+  dwShotsFired: 0x0000A280,
+  dwVecPunch: 0x00002FF8,
+  dwSetViewAngle: 0x4D0C,
+  dwAmmo: 0x15C0,
+  dwJump: 0x04AED310,
   iGlowIndex: 0x0000A2E0,
   iTeamNumber: 0x000000F0,
   iHealth: 0x000000FC,
   bDormant: 0x000000E9,
-  bSpotted: 0x00000935
+  bSpotted: 0x00000935,
+  flags: 0x100,
+  flashMaxAlpha: 0x0000A2C4
 }
 
 /* Update vars used for the hacks*/

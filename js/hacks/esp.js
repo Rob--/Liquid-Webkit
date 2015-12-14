@@ -58,7 +58,7 @@ app.controller('hackESP', ['$scope', function($scope) {
 		  var cPlayer = memoryjs.readMemory(_client + offsets.dwEntityList + i * 0x10, 'dword');
       var cPlayerDormant = memoryjs.readMemory(cPlayer + offsets.bDormant, 'boolean');
 
-      // dormant check to determine whether or not the player is a real player
+      /* dormant check to determine whether or not the player is a real player */
       if(cPlayerDormant) continue;
 
 		  var cPlayerTeam = memoryjs.readMemory(cPlayer + offsets.iTeamNumber, 'int');
@@ -105,7 +105,9 @@ app.controller('hackESP', ['$scope', function($scope) {
     memoryjs.writeMemory(glowPointer + ((glowIndex * 0x38) + 0x26), $scope.ESP.fullBloom, 'boolean');
   }
 
-  /* gets the rgab values for a given side */
+  /* gets the rgba values for a given side,
+     opacity is changed when spotted (if the feature is enabled),
+    and health based colour is return (if the feature is enabled) */
   function getColour(health, spotted, side) {
     if($scope.ESP.colours.healthBased && side != "item"){
       var colour = {
@@ -122,12 +124,14 @@ app.controller('hackESP', ['$scope', function($scope) {
         a: ($scope.ESP.colours[side].a / 100) * 1.4
       }
     }
-    
+
     if($scope.ESP.changeSpottedAlpha.enabled && spotted) colour.a *= $scope.ESP.changeSpottedAlpha.to / 100.0;
     return colour;
   }
 
-  /* id = classid */
+  /* id = classid, determines
+     whether or not a given classid
+     is a weapon */
   function isWeapon(id) {
     return [1, 8, 9, 13, 29, 31, 39, 40, 41, 64, 82, 83, 84, 89, 90, 93, 94, 104,
        115, 122, 126, 127, 176, 197, 198, 199, 200, 201, 203, 204, 205, 206, 207,

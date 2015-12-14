@@ -11,12 +11,12 @@
     <div class="container header">
       <div class="card white-text">
         <div class="card-content">
-          <h1>Liquid <small>v1.4</small></h1>
+          <h1>Liquid {{$(window).height()}}<small>v1.4</small></h1>
         </div>
       </div>
     </div>
 
-    <div class="container">
+    <div class="container hack-body">
       <ul class="collapsible" data-collapsible="accordion">
 
         <!-- ESP -->
@@ -176,6 +176,107 @@
           </div>
         </li>
 
+        <!-- Radar -->
+        <li ng-controller="hackRadar">
+          <!-- Header -->
+          <div ng-class="radar.enabled ? 'hack-enabled' : 'hack-disabled'" class="collapsible-header hack-header">
+            Permanent Radar
+
+            <!-- Hack Toggle -->
+            <span class="hack-switch">
+              <div class="switch">
+                <label>
+                  <input ng-model="radar.enabled" type="checkbox">
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </span>
+
+          </div>
+        </li>
+
+        <!-- Bunnyhop -->
+        <li ng-controller="hackBhop">
+          <!-- Header -->
+          <div ng-class="bhop.enabled ? 'hack-enabled' : 'hack-disabled'" class="collapsible-header hack-header">
+            Bunnyhop
+
+            <!-- Hack Toggle -->
+            <span class="hack-switch">
+              <div class="switch">
+                <label>
+                  <input ng-model="bhop.enabled" type="checkbox">
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </span>
+
+          </div>
+        </li>
+
+        <!-- No Flash -->
+        <li ng-controller="hackNoFlash">
+          <!-- Header -->
+          <div ng-class="noflash.enabled ? 'hack-enabled' : 'hack-disabled'" class="collapsible-header hack-header">
+            No Flash
+
+            <!-- Hack Toggle -->
+            <span class="hack-switch">
+              <div class="switch">
+                <label>
+                  <input ng-model="noflash.enabled" type="checkbox">
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </span>
+
+          </div>
+
+          <!-- Content -->
+          <div class="collapsible-body">
+            <br>
+            <div class="row hack-options">
+              <!-- No Flash Opacity -->
+              <p>No Flash Opacity ({{ noflash.opacity }}%):</p>
+              <p class="range-field">
+                <input ng-model="noflash.opacity" type="range" min="0" max="100" />
+              </p>
+            </div>
+          </div>
+
+        </li>
+
+        <!-- No Recoil -->
+        <li ng-controller="hackNoRecoil">
+          <!-- Header -->
+          <div ng-class="norecoil.enabled ? 'hack-enabled' : 'hack-disabled'" class="collapsible-header hack-header">
+            No Recoil
+
+            <!-- Hack Toggle -->
+            <span class="hack-switch">
+              <div class="switch">
+                <label>
+                  <input ng-model="norecoil.enabled" type="checkbox">
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </span>
+
+          </div>
+
+          <!-- Content -->
+          <div class="collapsible-body">
+            <br>
+            <div class="row hack-options">
+              <!-- No Recoil Accuracy -->
+              <p>No Recoil Accuracy ({{ norecoil.accuracy }}%):</p>
+              <p class="range-field">
+                <input ng-model="norecoil.accuracy" type="range" min="0" max="100" />
+              </p>
+            </div>
+          </div>
+
+        </li>
       </ul>
     </div>
 
@@ -189,5 +290,9 @@
 
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/hacks/esp.js"></script>
+    <script type="text/javascript" src="js/hacks/radar.js"></script>
+    <script type="text/javascript" src="js/hacks/bhop.js"></script>
+    <script type="text/javascript" src="js/hacks/noflash.js"></script>
+    <script type="text/javascript" src="js/hacks/norecoil.js"></script>
   </body>
 </html>
