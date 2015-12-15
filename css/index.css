@@ -184,11 +184,33 @@ and don't need so much space */
 /* Hide all elements of the scroll bar */
 ::-webkit-scrollbar, ::-webkit-scrollbar-button, ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-track-piece, ::-webkit-scrollbar-corner, ::-webkit-resizer {
-  background-color:rgba(0, 0, 0, 0)
+  background-color:rgba(0, 0, 0, 0);
 }
 
 /* Make the actual scroll piece transparent and rounded */
 ::-webkit-scrollbar-thumb {
   background-color:rgba(0, 0, 0, 0.3);
-  border-radius: 20px
+  border-radius: 20px;
+}
+
+/* Background of the progress bar */
+.progress {
+  background-color: #282C34
+}
+
+/* Fade track of progress bar */
+.indeterminate {
+  transition: background-color 0.5s linear;
+}
+
+/* Track of the progress bar while attempting
+   to find the game (open the game process) */
+.game-finding {
+  background-color: #96000E !important;
+}
+
+/* Track of the progress bar while attempting to find
+   the game modules (after the process has been opened) */
+.game-found {
+  background-color: #009688 !important;
 }

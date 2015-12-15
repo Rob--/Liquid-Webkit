@@ -6,17 +6,30 @@
     <link rel="stylesheet" href="css/index.css" type='text/css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,300' type='text/css'>
   </head>
-  <body ng-app="liquid">
+  <body ng-app="liquid" ng-controller="hackLoader">
 
     <div class="container header">
       <div class="card white-text">
         <div class="card-content">
-          <h1>Liquid {{$(window).height()}}<small>v1.4</small></h1>
+          <h1>Liquid <small>v1.4</small></h1>
         </div>
       </div>
     </div>
 
-    <div class="container hack-body">
+    <div ng-show="!loader.loaded.modules" class="container header">
+      <div class="card white-text">
+        <div class="card-content">
+          <h4 ng-bind="loader.info"></h4>
+
+          <div class="progress">
+            <div ng-class="loader.loaded.game ? 'game-found' : 'game-finding'" class="indeterminate"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="loader.loaded.modules" class="container hack-body">
       <ul class="collapsible" data-collapsible="accordion">
 
         <!-- ESP -->

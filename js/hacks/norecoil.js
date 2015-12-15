@@ -42,9 +42,9 @@ app.controller('hackNoRecoil', ['$scope', function($scope) {
     punch.y *= 1.0 + ($scope.norecoil.accuracy / 100.0);
 
     /* Check if auto firing because when writing to memory
-		   to shoot, the shotsFiredCount doesn't increase and therefore
-			 when using trigger bot we need to manually
-		   identify if we've been shooting. */
+       to shoot, the shotsFiredCount doesn't increase and therefore
+       when using trigger bot we need to manually
+       identify if we've been shooting. */
 		if (shotsFired > 1 || $scope.norecoil.autoFiring) {
       /* Modified coordinates, this eliminates recoil
          and is used as a base when writing the coordinates */

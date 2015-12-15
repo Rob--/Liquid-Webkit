@@ -25,7 +25,7 @@ app.controller('hackESP', ['$scope', function($scope) {
       healthBased: true
     },
     changeSpottedAlpha: {
-      enabled: true,
+      enabled: false,
       to: 100
     }
   }
@@ -55,15 +55,15 @@ app.controller('hackESP', ['$scope', function($scope) {
       /* Player ESP */
 
       /* 0x10 is the size of the entity in the list */
-		  var cPlayer = memoryjs.readMemory(_client + offsets.dwEntityList + i * 0x10, 'dword');
+      var cPlayer = memoryjs.readMemory(_client + offsets.dwEntityList + i * 0x10, 'dword');
       var cPlayerDormant = memoryjs.readMemory(cPlayer + offsets.bDormant, 'boolean');
 
       /* dormant check to determine whether or not the player is a real player */
       if(cPlayerDormant) continue;
 
-		  var cPlayerTeam = memoryjs.readMemory(cPlayer + offsets.iTeamNumber, 'int');
+      var cPlayerTeam = memoryjs.readMemory(cPlayer + offsets.iTeamNumber, 'int');
       var cPlayerGlowIndex = memoryjs.readMemory(cPlayer + offsets.iGlowIndex, 'int');
-			var cPlayerHealth = memoryjs.readMemory(cPlayer + offsets.iHealth, 'int');
+      var cPlayerHealth = memoryjs.readMemory(cPlayer + offsets.iHealth, 'int');
       var cPlayerSpotted = memoryjs.readMemory(cPlayer + offsets.bSpotted, 'boolean');
 
       /* 2 == Terrorists, 3 == Counter Terrorists,
@@ -125,6 +125,7 @@ app.controller('hackESP', ['$scope', function($scope) {
       }
     }
 
+    /* changes alpha when the player is spotted (if the feature is enabled) */
     if($scope.ESP.changeSpottedAlpha.enabled && spotted) colour.a *= $scope.ESP.changeSpottedAlpha.to / 100.0;
     return colour;
   }

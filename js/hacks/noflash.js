@@ -18,5 +18,5 @@ app.controller('hackNoFlash', ['$scope', function($scope) {
       memoryjs.writeMemory(myPlayer + offsets.flashMaxAlpha, ($scope.noflash.opacity / 100.0) * 255.0, 'float');
     }
 
-  }, 500);
+  }, 100);
 }]);
